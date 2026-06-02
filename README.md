@@ -1,10 +1,18 @@
 # Magicians on the Green (MotG) — Website Mockup
 
-A hand-built visual mockup of the MotG storefront. It is **not live on Shopify
-yet** — it is a clickable design draft, structured page-for-page and
-section-for-section so it can be rebuilt on Shopify when the store is purchased.
+A hand-built visual mockup of the MotG storefront. It is **not on Shopify yet** —
+it is a clickable design draft, structured page-for-page and section-for-section
+so it can be rebuilt on Shopify when the store is purchased.
 
-## How to view it
+## Live link (share this with the coach)
+
+**https://rfoster3.github.io/motg-website/**
+
+Hosted free on GitHub Pages from the repo `rfoster3/motg-website`. Works on phone
+and desktop. To update it later: edit the files, then `git commit` + `git push` —
+the live site refreshes in a minute or two.
+
+## How to view it locally
 
 Open `index.html` in any browser (double-click it), then click through the nav.
 No build step, no server needed. Fonts load from Google Fonts (needs internet).
@@ -25,27 +33,26 @@ No build step, no server needed. Fonts load from Google Fonts (needs internet).
 The little dark `Shopify: …` notes on each page are build hints for the rebuild.
 Delete them (search the HTML for `sf-note`) before showing anyone the polished version.
 
-## Swapping in the real images
+## Images — what's real vs. still needed
 
-Drop the real files into `assets/` using these exact names and the placeholders
-fill in automatically (every image has an `onerror` fallback, so missing files
-just show a labeled placeholder):
+Your uploaded photos are processed and wired in (web-optimized, in `assets/`).
+The wizard mascot and "M" logo had their backgrounds knocked out to transparent
+PNGs so they sit cleanly on the purple. The cap photo was cropped out of the phone
+screenshot; the team button-up was cropped from the team group shot.
 
-| Filename | What it is |
-|----------|------------|
-| `logo-m.png` | Ornate script "M" logomark (transparent PNG) — used in the header circle |
-| `wizard-mascot.png` | Golf-wizard mascot, transparent PNG — home + story hero |
-| `cap-star-m.png` | Star "M" cap |
-| `cap-purple-m.jpg` | Purple performance "M" cap |
-| `magic-stick-headcovers.jpg` | Magic Stick driver/3-wood headcovers — featured + product page |
-| `magic-stick-3wood.jpg` | Fairway headcover alt shot |
-| `team-shirt.jpg` | Cream team button-up |
-| `wizard-tee.jpg`, `quarter-zip.jpg`, `towel.jpg` | Other shop items |
-| `team-photo.jpg` | Group team photo — home "The Team" band |
-| `player-photo.jpg`, `player-1/2/3.jpg`, `coach.jpg` | Story / sponsor photos |
+**Real photos in use:** wizard mascot, M logo, Magic Stick driver/fairway/set,
+purple "M" cap, cream team button-up, team group photo, coach, plus story candids.
 
-Tip: the wizard mascot and the "M" logo look best as **transparent PNGs** so they
-sit cleanly on the purple backgrounds.
+**Still shown as branded "Photo coming soon" tiles** (need real product shots):
+Star "M" snapback, Golf Wizard tee, Players golf towel.
+
+The full-resolution originals (incl. HEIC + the Team Win video) are kept locally in
+`_source/` and are **not** published to the web. To regenerate/retune the web
+images, edit and run `_build_assets.py` (needs Python + Pillow + numpy + scipy).
+
+To add a missing product photo: drop a square-ish image into `assets/`, then in the
+relevant page swap the `<div class="media soon">…</div>` block for
+`<div class="media"><img src="assets/your-file.jpg" alt="…"></div>`.
 
 ## Brand system (edit in `css/brand.css`)
 
