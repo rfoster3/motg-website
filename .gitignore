@@ -1,0 +1,8 @@
+# local source originals (huge HEIC/MOV/full-res) — not for the web
+_source/
+_build_assets.py
+# QA + tooling artifacts
+.playwright-mcp/
+_check_*.jpg
+*.log
+.DS_Store
