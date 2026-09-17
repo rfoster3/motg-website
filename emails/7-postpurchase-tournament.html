@@ -1,0 +1,69 @@
+<!-- ============================================================
+  EMAIL: Post-purchase thank-you (TOURNAMENT entrant)
+  Type: Automation, trigger = order placed, condition: product type is Tournament Entry
+  Subject: You are in. See you on the green.
+  Preview: Your spot at Magic on the Greens is confirmed. Details inside.
+============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your tournament spot is confirmed</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f5f0e1;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f0e1;">
+    <tr>
+      <td align="center" style="padding:20px 12px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:100%; max-width:600px; background-color:#ffffff; border-radius:14px; overflow:hidden;">
+          <tr>
+            <td align="center" style="background-color:#2e1a4f; padding:24px 20px;">
+              <div style="font-family:Georgia,'Times New Roman',serif; color:#e2c275; font-size:24px; font-weight:bold;">Magic on the Greens</div>
+              <div style="font-family:Arial,Helvetica,sans-serif; color:#ffffff; font-size:12px; letter-spacing:2px; text-transform:uppercase; margin-top:5px;">September 13 to 15, 2026</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:30px 26px 0; font-family:Arial,Helvetica,sans-serif; color:#141019;">
+              <div style="font-family:Georgia,'Times New Roman',serif; font-size:25px; color:#4b2a7f; font-weight:bold;">You are in, {{ customer.first_name }}.</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px 26px 0; font-family:Arial,Helvetica,sans-serif; color:#141019; font-size:16px; line-height:1.6;">
+              <p style="margin:0 0 16px;">Your entry to the Magic on the Greens golf tournament is confirmed. Here are the basics:</p>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 20px; background-color:#f5f0e1; border-radius:10px;">
+                <tr><td style="padding:16px 18px; font-family:Arial,Helvetica,sans-serif; color:#141019; font-size:15px; line-height:1.7;">
+                  <strong style="color:#4b2a7f;">When:</strong> September 13 to 15, 2026<br>
+                  <strong style="color:#4b2a7f;">Where:</strong> The Links at Pine Hill, 930 E Mallory Ave, Memphis, TN<br>
+                  <strong style="color:#4b2a7f;">Format:</strong> 54-hole stroke play, 9:00 AM CT shotgun start
+                </td></tr>
+              </table>
+              <p style="margin:0 0 22px;">We will send the full schedule, breakfast, and lodging details closer to the date. Save this email.</p>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:0 26px 6px;">
+              <table role="presentation" cellpadding="0" cellspacing="0">
+                <tr><td align="center" bgcolor="#c9a24b" style="border-radius:6px;">
+                  <a href="https://magiciansonthegreen.org/pages/tournament" style="display:inline-block; padding:14px 30px; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; color:#2e1a4f; text-decoration:none; text-transform:uppercase; letter-spacing:0.5px;">Invite a foursome</a>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:14px 26px 30px; font-family:Arial,Helvetica,sans-serif; color:#6b6378; font-size:13px;">
+              Know other players? Only 15 team spots, so send them the link before it fills.
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color:#2e1a4f; padding:22px 26px; font-family:Arial,Helvetica,sans-serif; color:#cfc6dd; font-size:12px; line-height:1.6;">
+              <strong style="color:#e2c275;">Magicians on the Green</strong><br>
+              Questions? Dominique Worthen, Head Golf Coach. <a href="mailto:dominique_worthen@loc.edu" style="color:#e2c275;">dominique_worthen@loc.edu</a>, 901-359-3858<br><br>
+              <span style="color:#9a8fb0;">Every entry funds the LeMoyne-Owen College golf team.</span>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

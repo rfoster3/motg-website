@@ -1,0 +1,62 @@
+<!-- ============================================================
+  EMAIL: Post-purchase thank-you (SPONSOR)
+  Type: Automation, trigger = order placed, condition: product type is Sponsorship
+  Subject: Thank you for backing the Magicians.
+  Preview: Your sponsorship fuels the program. The coach will be in touch.
+  Goal: relationship handoff to the coach (sponsorships are a human follow-up sale).
+============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thank you for sponsoring</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f5f0e1;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f0e1;">
+    <tr>
+      <td align="center" style="padding:20px 12px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:100%; max-width:600px; background-color:#ffffff; border-radius:14px; overflow:hidden;">
+          <tr>
+            <td align="center" style="background-color:#2e1a4f; padding:24px 20px;">
+              <img src="https://rfoster3.github.io/motg-website/assets/wizard-mascot.png" width="100" alt="Magicians on the Green" style="display:block; width:100px; max-width:100px; height:auto;">
+              <div style="font-family:Georgia,'Times New Roman',serif; color:#e2c275; font-size:20px; font-weight:bold; margin-top:8px;">Magicians on the Green</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:30px 26px 0; font-family:Arial,Helvetica,sans-serif; color:#141019;">
+              <div style="font-family:Georgia,'Times New Roman',serif; font-size:25px; color:#4b2a7f; font-weight:bold;">Thank you for backing the Magicians.</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px 26px 0; font-family:Arial,Helvetica,sans-serif; color:#141019; font-size:16px; line-height:1.6;">
+              <p style="margin:0 0 16px;">{{ customer.first_name }}, your sponsorship directly fuels the LeMoyne-Owen College golf program, and it puts your brand in front of a proud HBCU community and the Memphis golf scene.</p>
+              <p style="margin:0 0 16px;"><strong>What happens next:</strong> Coach Dominique Worthen will reach out personally to collect your logo and confirm your benefits, so everything is ready well before September 13.</p>
+              <p style="margin:0 0 22px;">If you want to get a head start, just reply to this email with your logo and any questions.</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:0 26px 6px; font-family:Arial,Helvetica,sans-serif; color:#141019; font-size:15px; line-height:1.6;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f0e1; border-radius:10px;">
+                <tr><td style="padding:16px 18px;">
+                  <strong style="color:#4b2a7f;">Your contact:</strong><br>
+                  Dominique Worthen, Head Golf Coach<br>
+                  <a href="mailto:dominique_worthen@loc.edu" style="color:#9a7d2e;">dominique_worthen@loc.edu</a><br>
+                  901-359-3858
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:24px 26px; background-color:#2e1a4f; font-family:Arial,Helvetica,sans-serif; color:#cfc6dd; font-size:12px; line-height:1.6;">
+              <strong style="color:#e2c275;">Magicians on the Green</strong><br>
+              In partnership with PGA of America and Make Golf Your Career.<br><br>
+              <span style="color:#9a8fb0;">Your support funds student-athletes at LeMoyne-Owen College.</span>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

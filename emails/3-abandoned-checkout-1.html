@@ -1,0 +1,73 @@
+<!-- ============================================================
+  EMAIL: Abandoned checkout 1 of 2
+  Type: Automation, trigger = checkout started, not completed. Send ~1 hour after.
+  Subject: You left something in your bag
+  Preview: Your order is still waiting, and it funds the team. Finish in one tap.
+  NOTE: {{ checkout.url }} below = use Shopify's dynamic "checkout / complete order" link
+        from the abandoned-checkout automation editor. {{ customer.first_name }} optional.
+============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>You left something in your bag</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f5f0e1;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f0e1;">
+    <tr>
+      <td align="center" style="padding:20px 12px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:100%; max-width:600px; background-color:#ffffff; border-radius:14px; overflow:hidden;">
+
+          <tr>
+            <td align="center" style="background-color:#2e1a4f; padding:22px 20px;">
+              <div style="font-family:Georgia,'Times New Roman',serif; color:#e2c275; font-size:20px; font-weight:bold; letter-spacing:0.5px;">Magicians on the Green</div>
+              <div style="font-family:Arial,Helvetica,sans-serif; color:#ffffff; font-size:11px; letter-spacing:2px; text-transform:uppercase; margin-top:4px;">LeMoyne-Owen College Golf</div>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:30px 26px 0; font-family:Arial,Helvetica,sans-serif; color:#141019;">
+              <div style="font-family:Georgia,'Times New Roman',serif; font-size:26px; color:#4b2a7f; font-weight:bold;">Almost there.</div>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:10px 26px 0; font-family:Arial,Helvetica,sans-serif; color:#141019; font-size:16px; line-height:1.6;">
+              <p style="margin:0 0 16px;">You were this close. Your items are still in your bag, and every one of them sends the LeMoyne-Owen College golf team a little further down the fairway.</p>
+              <p style="margin:0 0 24px;">Pick up right where you left off.</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" style="padding:0 26px 8px;">
+              <table role="presentation" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center" bgcolor="#c9a24b" style="border-radius:6px;">
+                    <a href="{{ checkout.url }}" style="display:inline-block; padding:15px 34px; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; color:#2e1a4f; text-decoration:none; text-transform:uppercase; letter-spacing:0.5px;">Finish my order</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" style="padding:14px 26px 30px; font-family:Arial,Helvetica,sans-serif; color:#6b6378; font-size:13px; line-height:1.6;">
+              Secure checkout. 100% of your order funds the program.
+            </td>
+          </tr>
+
+          <tr>
+            <td style="background-color:#2e1a4f; padding:22px 26px; font-family:Arial,Helvetica,sans-serif; color:#cfc6dd; font-size:12px; line-height:1.6;">
+              <strong style="color:#e2c275;">Magicians on the Green</strong><br>
+              Questions? Email <a href="mailto:dominique_worthen@loc.edu" style="color:#e2c275;">dominique_worthen@loc.edu</a><br><br>
+              <span style="color:#9a8fb0;">Supporting the LeMoyne-Owen College golf team, Memphis, TN.</span>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

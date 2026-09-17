@@ -1,0 +1,62 @@
+<!-- ============================================================
+  EMAIL: Post-purchase thank-you (MERCH buyer)
+  Type: Automation, trigger = order placed, condition: product type is Headcover / Hat / Apparel / Accessory
+  Subject: Thank you. You just funded the team.
+  Preview: Your gear ships from Memphis soon. Here is what your order does.
+============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thank you from Magicians on the Green</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f5f0e1;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f0e1;">
+    <tr>
+      <td align="center" style="padding:20px 12px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:100%; max-width:600px; background-color:#ffffff; border-radius:14px; overflow:hidden;">
+          <tr>
+            <td align="center" style="background-color:#2e1a4f; padding:24px 20px;">
+              <img src="https://rfoster3.github.io/motg-website/assets/wizard-mascot.png" width="100" alt="Magicians on the Green" style="display:block; width:100px; max-width:100px; height:auto;">
+              <div style="font-family:Georgia,'Times New Roman',serif; color:#e2c275; font-size:20px; font-weight:bold; margin-top:8px;">Magicians on the Green</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:30px 26px 0; font-family:Arial,Helvetica,sans-serif; color:#141019;">
+              <div style="font-family:Georgia,'Times New Roman',serif; font-size:25px; color:#4b2a7f; font-weight:bold;">Thank you, {{ customer.first_name }}.</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px 26px 0; font-family:Arial,Helvetica,sans-serif; color:#141019; font-size:16px; line-height:1.6;">
+              <p style="margin:0 0 16px;">Your order is confirmed and ships from Memphis in 3 to 5 business days. You will get tracking when it is on the way.</p>
+              <p style="margin:0 0 22px;">Wearing the magic is more than gear. Your order funds equipment, tournament travel, and scholarships for the team. <strong>You just helped a student-athlete get further down the fairway.</strong></p>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:0 26px 6px;">
+              <table role="presentation" cellpadding="0" cellspacing="0">
+                <tr><td align="center" bgcolor="#4b2a7f" style="border-radius:6px;">
+                  <a href="https://magiciansonthegreen.org/pages/donate" style="display:inline-block; padding:14px 30px; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; color:#ffffff; text-decoration:none; text-transform:uppercase; letter-spacing:0.5px;">Do even more, give</a>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:14px 26px 30px; font-family:Arial,Helvetica,sans-serif; color:#6b6378; font-size:13px;">
+              Wearing your gear? Tag us so the team can see the magic out in the world.
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color:#2e1a4f; padding:22px 26px; font-family:Arial,Helvetica,sans-serif; color:#cfc6dd; font-size:12px; line-height:1.6;">
+              <strong style="color:#e2c275;">Magicians on the Green</strong><br>
+              Questions about your order? <a href="mailto:dominique_worthen@loc.edu" style="color:#e2c275;">dominique_worthen@loc.edu</a><br><br>
+              <span style="color:#9a8fb0;">100% of every purchase and gift funds the program.</span>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
