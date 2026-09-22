@@ -1,0 +1,82 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": { "type": "text", "settings": { "text": "{{ product.vendor }}", "text_style": "uppercase" } },
+        "title": { "type": "title" },
+        "price": { "type": "price" },
+        "impact_badge": { "type": "text", "settings": { "text": "✦ 100% of proceeds fund the LeMoyne-Owen College golf team", "text_style": "subtitle" } },
+        "variant_picker": { "type": "variant_picker", "settings": { "picker_type": "button" } },
+        "quantity_selector": { "type": "quantity_selector" },
+        "buy_buttons": { "type": "buy_buttons", "settings": { "show_dynamic_checkout": true, "show_gift_card_recipient": false } },
+        "description": { "type": "description" },
+        "shipping": {
+          "type": "collapsible_tab",
+          "settings": { "heading": "Shipping & Returns", "icon": "truck", "content": "<p>Ships from Memphis, TN in 3-5 business days. 30-day returns on unworn merch.</p>", "page": "" }
+        },
+        "impact": {
+          "type": "collapsible_tab",
+          "settings": { "heading": "Where Your Money Goes", "icon": "heart", "content": "<p>100% of proceeds fund the LeMoyne-Owen College golf team, equipment, tournament travel, and scholarships for student-athletes.</p>", "page": "" }
+        },
+        "share": { "type": "share", "settings": { "share_label": "Share" } }
+      },
+      "block_order": ["vendor", "title", "price", "impact_badge", "variant_picker", "quantity_selector", "buy_buttons", "description", "shipping", "impact", "share"],
+      "settings": {
+        "enable_sticky_info": true,
+        "gallery_layout": "stacked",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "trustbar": {
+      "type": "motg-trustbar",
+      "blocks": {
+        "b1": { "type": "item", "settings": { "icon": "✦", "title": "100% to the Team", "text": "Every dollar funds the program" } },
+        "b2": { "type": "item", "settings": { "icon": "✦", "title": "Ships from Memphis", "text": "3-5 business days" } },
+        "b3": { "type": "item", "settings": { "icon": "✦", "title": "Secure Checkout", "text": "Encrypted & protected" } },
+        "b4": { "type": "item", "settings": { "icon": "✦", "title": "Official HBCU Golf", "text": "LeMoyne-Owen College" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"],
+      "settings": { "color_scheme": "scheme-2" }
+    },
+    "impact_band": {
+      "type": "motg-feature",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "layout": "image_right",
+        "align": "left",
+        "asset_image": "motg-team.jpg",
+        "eyebrow": "Your purchase = impact",
+        "heading": "Every order funds a student-athlete",
+        "body": "<p>This isn't just gear. Every headcover, hat, and shirt sends the LeMoyne-Owen Magicians a little further down the fairway, to the next tournament, the next round, the next opportunity.</p>",
+        "button1_label": "Meet the Team",
+        "button1_link": "/pages/our-story",
+        "button2_label": "Donate",
+        "button2_link": "/pages/donate"
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "More from the Collection",
+        "heading_size": "h2",
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": ["main", "trustbar", "impact_band", "related-products"]
+}

@@ -1,0 +1,53 @@
+{%- comment -%} Magicians on the Green, persuasive tier cards (donate / sponsor) {%- endcomment -%}
+<div class="motg-tiers color-{{ section.settings.color_scheme }}">
+  <div class="page-width motg-tiers__wrap">
+    {%- if section.settings.eyebrow != blank -%}<p class="motg-eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2 class="motg-tiers__h">{{ section.settings.heading }}</h2>{%- endif -%}
+    <hr class="motg-rule center">
+    {%- if section.settings.subheading != blank -%}<p class="motg-tiers__sub">{{ section.settings.subheading }}</p>{%- endif -%}
+    <div class="motg-tiers__grid" style="--cols: {{ section.blocks.size }};">
+      {%- for block in section.blocks -%}
+        <div class="motg-tier{% if block.settings.highlight %} is-highlight{% endif %}" {{ block.shopify_attributes }}>
+          {%- if block.settings.badge != blank -%}<span class="motg-tier__badge">{{ block.settings.badge }}</span>{%- endif -%}
+          <p class="motg-tier__name">{{ block.settings.name }}</p>
+          <p class="motg-tier__amount">{{ block.settings.amount }}</p>
+          {%- assign perks = block.settings.perks | newline_to_br | split: '<br />' -%}
+          <ul class="motg-tier__perks">
+            {%- for p in perks -%}{%- assign pt = p | strip -%}{%- if pt != blank -%}<li>{{ pt }}</li>{%- endif -%}{%- endfor -%}
+          </ul>
+          {%- if block.settings.button_label != blank -%}
+            <a href="{{ block.settings.button_link }}" class="motg-tier__btn{% if block.settings.highlight %} gold{% endif %}">{{ block.settings.button_label }}</a>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.footnote != blank -%}<p class="motg-tiers__foot">{{ section.settings.footnote }}</p>{%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MotG Tier Cards",
+  "tag": "section",
+  "class": "motg-tiers-section",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Choose a level" },
+    { "type": "text", "id": "subheading", "label": "Subheading" },
+    { "type": "text", "id": "footnote", "label": "Footnote" }
+  ],
+  "blocks": [
+    { "type": "tier", "name": "Tier", "settings": [
+      { "type": "text", "id": "name", "label": "Name", "default": "Tier" },
+      { "type": "text", "id": "amount", "label": "Amount", "default": "$50" },
+      { "type": "textarea", "id": "perks", "label": "Perks (one per line)" },
+      { "type": "text", "id": "button_label", "label": "Button label", "default": "Give" },
+      { "type": "url", "id": "button_link", "label": "Button link" },
+      { "type": "checkbox", "id": "highlight", "label": "Highlight (most popular)", "default": false },
+      { "type": "text", "id": "badge", "label": "Badge text" }
+    ] }
+  ],
+  "presets": [{ "name": "MotG Tier Cards" }]
+}
+{% endschema %}

@@ -1,0 +1,41 @@
+{%- comment -%} Magicians on the Green — trust / reassurance bar {%- endcomment -%}
+<div class="motg-trustbar color-{{ section.settings.color_scheme }}">
+  <div class="page-width motg-trustbar__inner">
+    {%- for block in section.blocks -%}
+      <div class="motg-trustbar__item" {{ block.shopify_attributes }}>
+        {%- if block.settings.icon != blank -%}<span class="motg-trustbar__icon">{{ block.settings.icon }}</span>{%- endif -%}
+        <div>
+          <p class="motg-trustbar__title">{{ block.settings.title }}</p>
+          {%- if block.settings.text != blank -%}<p class="motg-trustbar__text">{{ block.settings.text }}</p>{%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MotG Trust Bar",
+  "tag": "section",
+  "class": "motg-trustbar-section",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+  ],
+  "blocks": [
+    { "type": "item", "name": "Item", "settings": [
+      { "type": "text", "id": "icon", "label": "Icon (emoji)", "default": "✦" },
+      { "type": "text", "id": "title", "label": "Title", "default": "Benefit" },
+      { "type": "text", "id": "text", "label": "Text" }
+    ] }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    { "name": "MotG Trust Bar", "blocks": [
+      { "type": "item", "settings": { "icon": "✦", "title": "100% to the Team", "text": "Every dollar funds the program" } },
+      { "type": "item", "settings": { "icon": "✦", "title": "Ships from Memphis", "text": "3–5 business days" } },
+      { "type": "item", "settings": { "icon": "✦", "title": "Secure Checkout", "text": "Encrypted & protected" } },
+      { "type": "item", "settings": { "icon": "✦", "title": "Official HBCU Golf", "text": "LeMoyne-Owen College" } }
+    ] }
+  ]
+}
+{% endschema %}

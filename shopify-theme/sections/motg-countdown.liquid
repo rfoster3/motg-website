@@ -1,0 +1,57 @@
+{%- comment -%} Magicians on the Green, countdown + scarcity band {%- endcomment -%}
+<div class="motg-countdown color-{{ section.settings.color_scheme }}">
+  <div class="page-width motg-countdown__wrap">
+    {%- if section.settings.eyebrow != blank -%}<p class="motg-eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    {%- if section.settings.script_word != blank -%}<span class="motg-script motg-countdown__script">{{ section.settings.script_word }}</span>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2 class="motg-countdown__h">{{ section.settings.heading }}</h2>{%- endif -%}
+    <div class="motg-countdown__clock" data-deadline="{{ section.settings.deadline }}">
+      <div class="cd"><span class="cd-n" data-cd="d">--</span><span class="cd-l">Days</span></div>
+      <div class="cd"><span class="cd-n" data-cd="h">--</span><span class="cd-l">Hrs</span></div>
+      <div class="cd"><span class="cd-n" data-cd="m">--</span><span class="cd-l">Min</span></div>
+      <div class="cd"><span class="cd-n" data-cd="s">--</span><span class="cd-l">Sec</span></div>
+    </div>
+    {%- if section.settings.scarcity != blank -%}<p class="motg-countdown__scarcity">{{ section.settings.scarcity }}</p>{%- endif -%}
+    <div class="motg-countdown__cta">
+      {%- if section.settings.button1_label != blank -%}<a href="{{ section.settings.button1_link }}" class="motg-btn-gold">{{ section.settings.button1_label }}</a>{%- endif -%}
+      {%- if section.settings.button2_label != blank -%}<a href="{{ section.settings.button2_link }}" class="motg-btn-ghost">{{ section.settings.button2_label }}</a>{%- endif -%}
+    </div>
+  </div>
+</div>
+<script>
+  (function(){
+    var el = document.currentScript.previousElementSibling.querySelector('.motg-countdown__clock');
+    if(!el) return;
+    var dl = new Date(el.getAttribute('data-deadline')).getTime();
+    function pad(n){ return (n<10?'0':'')+n; }
+    function tick(){
+      var t = dl - Date.now();
+      if(isNaN(dl)) return;
+      if(t<0) t=0;
+      var d=Math.floor(t/86400000), h=Math.floor(t%86400000/3600000), m=Math.floor(t%3600000/60000), s=Math.floor(t%60000/1000);
+      var set=function(k,v){ var n=el.querySelector('[data-cd="'+k+'"]'); if(n) n.textContent=pad(v); };
+      set('d',d); set('h',h); set('m',m); set('s',s);
+    }
+    tick(); setInterval(tick,1000);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "MotG Countdown",
+  "tag": "section",
+  "class": "motg-countdown-section",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-3" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Links at Pine Hill · Memphis, TN" },
+    { "type": "text", "id": "script_word", "label": "Script word", "default": "Magic on the Greens" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Tees off in" },
+    { "type": "text", "id": "deadline", "label": "Deadline (ISO)", "default": "2026-09-13T09:00:00-05:00" },
+    { "type": "text", "id": "scarcity", "label": "Scarcity line", "default": "Only 15 team foursomes. Secure your spot before they're gone." },
+    { "type": "text", "id": "button1_label", "label": "Button 1 label", "default": "Team Entry $1,500" },
+    { "type": "url", "id": "button1_link", "label": "Button 1 link" },
+    { "type": "text", "id": "button2_label", "label": "Button 2 label", "default": "Individual $300" },
+    { "type": "url", "id": "button2_link", "label": "Button 2 link" }
+  ],
+  "presets": [{ "name": "MotG Countdown" }]
+}
+{% endschema %}

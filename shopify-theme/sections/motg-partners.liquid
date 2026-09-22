@@ -1,0 +1,45 @@
+{%- comment -%} Magicians on the Green — partner / social-proof strip {%- endcomment -%}
+<div class="motg-partners color-{{ section.settings.color_scheme }}">
+  <div class="page-width motg-partners__wrap">
+    {%- if section.settings.heading != blank -%}<p class="motg-partners__h">{{ section.settings.heading }}</p>{%- endif -%}
+    <div class="motg-partners__row">
+      {%- for block in section.blocks -%}
+        <div class="motg-partners__item" {{ block.shopify_attributes }}>
+          {%- if block.settings.logo != blank -%}
+            <img src="{{ block.settings.logo | image_url: width: 280 }}" alt="{{ block.settings.name | escape }}" loading="lazy" height="46">
+          {%- else -%}
+            <span>{{ block.settings.name }}</span>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.subtext != blank -%}<p class="motg-partners__sub">{{ section.settings.subtext }}</p>{%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MotG Partners",
+  "tag": "section",
+  "class": "motg-partners-section",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Partners in Purpose" },
+    { "type": "text", "id": "subtext", "label": "Subtext" }
+  ],
+  "blocks": [
+    { "type": "partner", "name": "Partner", "settings": [
+      { "type": "text", "id": "name", "label": "Name", "default": "Partner" },
+      { "type": "image_picker", "id": "logo", "label": "Logo (optional, overrides name)" }
+    ] }
+  ],
+  "presets": [
+    { "name": "MotG Partners", "blocks": [
+      { "type": "partner", "settings": { "name": "PGA of America" } },
+      { "type": "partner", "settings": { "name": "PGA Career Services" } },
+      { "type": "partner", "settings": { "name": "Make Golf Your Career" } },
+      { "type": "partner", "settings": { "name": "LeMoyne-Owen College" } }
+    ] }
+  ]
+}
+{% endschema %}

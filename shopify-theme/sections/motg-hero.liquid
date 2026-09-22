@@ -1,0 +1,65 @@
+{%- comment -%} Magicians on the Green, custom wizard hero {%- endcomment -%}
+<div class="motg-hero color-{{ section.settings.color_scheme }}">
+  <div class="motg-hero__grid page-width">
+    <div class="motg-hero__copy">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="motg-eyebrow motg-hero__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h1>
+        {%- if section.settings.script_word != blank -%}<span class="motg-script">{{ section.settings.script_word }}</span>{%- endif -%}
+        {{ section.settings.title }}
+      </h1>
+      {%- if section.settings.lead != blank -%}
+        <p class="motg-hero__lead">{{ section.settings.lead }}</p>
+      {%- endif -%}
+      <div class="motg-hero__cta">
+        {%- if section.settings.button1_label != blank -%}
+          <a href="{{ section.settings.button1_link }}" class="motg-btn-gold">{{ section.settings.button1_label }}</a>
+        {%- endif -%}
+        {%- if section.settings.button2_label != blank -%}
+          <a href="{{ section.settings.button2_link }}" class="motg-btn-ghost">{{ section.settings.button2_label }} ✦</a>
+        {%- endif -%}
+      </div>
+      <div class="motg-hero__stats">
+        {%- if section.settings.stat1_n != blank -%}<div><div class="n">{{ section.settings.stat1_n }}</div><div class="l">{{ section.settings.stat1_l }}</div></div>{%- endif -%}
+        {%- if section.settings.stat2_n != blank -%}<div><div class="n">{{ section.settings.stat2_n }}</div><div class="l">{{ section.settings.stat2_l }}</div></div>{%- endif -%}
+        {%- if section.settings.stat3_n != blank -%}<div><div class="n">{{ section.settings.stat3_n }}</div><div class="l">{{ section.settings.stat3_l }}</div></div>{%- endif -%}
+      </div>
+    </div>
+    <div class="motg-hero__art">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 900 | image_tag: loading: 'eager', alt: section.settings.title }}
+      {%- else -%}
+        <img src="{{ 'motg-wizard.png' | asset_url }}" alt="{{ section.settings.title | escape }}" width="900" height="894" loading="eager">
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MotG Hero",
+  "tag": "section",
+  "class": "motg-hero-section",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-3" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Fund the team · Wear the magic" },
+    { "type": "text", "id": "script_word", "label": "Script word", "default": "Magicians" },
+    { "type": "text", "id": "title", "label": "Title", "default": "on the Green" },
+    { "type": "textarea", "id": "lead", "label": "Lead text", "default": "Every hat, headcover, and gift drives the LeMoyne-Owen College golf team down the fairway. Shop the collection or give straight to the program." },
+    { "type": "image_picker", "id": "image", "label": "Hero image (defaults to wizard mascot)" },
+    { "type": "text", "id": "button1_label", "label": "Button 1 label", "default": "Shop the Collection" },
+    { "type": "url", "id": "button1_link", "label": "Button 1 link" },
+    { "type": "text", "id": "button2_label", "label": "Button 2 label", "default": "Donate" },
+    { "type": "url", "id": "button2_link", "label": "Button 2 link" },
+    { "type": "header", "content": "Stats" },
+    { "type": "text", "id": "stat1_n", "label": "Stat 1 number", "default": "100%" },
+    { "type": "text", "id": "stat1_l", "label": "Stat 1 label", "default": "Supports the team" },
+    { "type": "text", "id": "stat2_n", "label": "Stat 2 number", "default": "HBCU" },
+    { "type": "text", "id": "stat2_l", "label": "Stat 2 label", "default": "Memphis, TN" },
+    { "type": "text", "id": "stat3_n", "label": "Stat 3 number", "default": "54" },
+    { "type": "text", "id": "stat3_l", "label": "Stat 3 label", "default": "Holes of magic" }
+  ],
+  "presets": [{ "name": "MotG Hero" }]
+}
+{% endschema %}

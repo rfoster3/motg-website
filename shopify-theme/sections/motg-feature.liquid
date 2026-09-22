@@ -1,0 +1,61 @@
+{%- comment -%} Magicians on the Green, flexible image/CTA band {%- endcomment -%}
+{%- liquid
+  assign img_src = ''
+  if section.settings.image != blank
+    assign img_src = section.settings.image | image_url: width: 1400
+  elsif section.settings.asset_image != blank
+    assign img_src = section.settings.asset_image | asset_url
+  endif
+-%}
+<div class="motg-feature color-{{ section.settings.color_scheme }} layout-{{ section.settings.layout }}">
+  <div class="page-width motg-feature__inner align-{{ section.settings.align }}">
+    {%- if img_src != blank and section.settings.layout != 'text_only' -%}
+      <div class="motg-feature__media">
+        <img src="{{ img_src }}" alt="{{ section.settings.heading | escape }}" width="1200" height="800" loading="lazy">
+      </div>
+    {%- endif -%}
+    <div class="motg-feature__copy">
+      {%- if section.settings.eyebrow != blank -%}<p class="motg-eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="motg-feature__title">
+        {%- if section.settings.script_word != blank -%}<span class="motg-script" style="font-size:1.7em;display:block;">{{ section.settings.script_word }}</span>{%- endif -%}
+        {{ section.settings.heading }}
+      </h2>
+      <hr class="motg-rule{% if section.settings.align == 'center' %} center{% endif %}">
+      {%- if section.settings.body != blank -%}<div class="motg-feature__body rte">{{ section.settings.body }}</div>{%- endif -%}
+      <div class="motg-feature__cta">
+        {%- if section.settings.button1_label != blank -%}<a href="{{ section.settings.button1_link }}" class="motg-btn-gold">{{ section.settings.button1_label }}</a>{%- endif -%}
+        {%- if section.settings.button2_label != blank -%}<a href="{{ section.settings.button2_link }}" class="motg-btn-ghost">{{ section.settings.button2_label }}</a>{%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MotG Feature / CTA",
+  "tag": "section",
+  "class": "motg-feature-section",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "select", "id": "layout", "label": "Layout", "default": "image_left",
+      "options": [
+        { "value": "image_left", "label": "Image left" },
+        { "value": "image_right", "label": "Image right" },
+        { "value": "text_only", "label": "Text only (CTA band)" }
+      ] },
+    { "type": "select", "id": "align", "label": "Text align", "default": "left",
+      "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" } ] },
+    { "type": "text", "id": "asset_image", "label": "Theme asset image filename", "info": "e.g. motg-team.jpg" },
+    { "type": "image_picker", "id": "image", "label": "Image override (optional)" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "script_word", "label": "Script word (optional)" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Heading" },
+    { "type": "richtext", "id": "body", "label": "Body" },
+    { "type": "text", "id": "button1_label", "label": "Button 1 label" },
+    { "type": "url", "id": "button1_link", "label": "Button 1 link" },
+    { "type": "text", "id": "button2_label", "label": "Button 2 label" },
+    { "type": "url", "id": "button2_link", "label": "Button 2 link" }
+  ],
+  "presets": [{ "name": "MotG Feature / CTA" }]
+}
+{% endschema %}

@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "countdown": {
+      "type": "motg-countdown",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "eyebrow": "The Links at Pine Hill · Memphis, TN",
+        "script_word": "Magic on the Greens",
+        "heading": "Tees off in",
+        "deadline": "2026-09-13T09:00:00-05:00",
+        "scarcity": "54-hole stroke play · Only 15 team foursomes. Secure your spot before they're gone.",
+        "button1_label": "Team Entry $1,500",
+        "button1_link": "/products/tournament-team-entry-foursome",
+        "button2_label": "Individual $300",
+        "button2_link": "/products/tournament-individual-entry-player"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": { "padding_top": 28, "padding_bottom": 24 }
+    },
+    "partners": {
+      "type": "motg-partners",
+      "blocks": {
+        "p1": { "type": "partner", "settings": { "name": "PGA of America" } },
+        "p2": { "type": "partner", "settings": { "name": "PGA Career Services" } },
+        "p3": { "type": "partner", "settings": { "name": "Make Golf Your Career" } },
+        "p4": { "type": "partner", "settings": { "name": "Rise" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"],
+      "settings": { "color_scheme": "scheme-2", "heading": "Presented in Partnership With", "subtext": "Breakfast by Rise · Refreshments by PGA of America & Make Golf Your Career" }
+    }
+  },
+  "order": ["countdown", "main", "partners"]
+}

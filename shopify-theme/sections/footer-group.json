@@ -1,0 +1,54 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "explore": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Explore",
+            "menu": "footer"
+          }
+        },
+        "contact": {
+          "type": "text",
+          "settings": {
+            "heading": "Get in Touch",
+            "subtext": "<p>Dominique Worthen, Head Golf Coach<br><a href=\"mailto:dominique_worthen@loc.edu\">dominique_worthen@loc.edu</a><br><a href=\"tel:19013593858\">901-359-3858</a><br>807 Walker Ave, Memphis, TN 38126</p>"
+          }
+        },
+        "mission": {
+          "type": "text",
+          "settings": {
+            "heading": "Our Mission",
+            "subtext": "<p>Magicians on the Green funds the LeMoyne-Owen College golf team, a proud HBCU program in Memphis. <strong>100% of every purchase and gift powers student-athletes.</strong></p>"
+          }
+        },
+        "help": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Help",
+            "menu": "footer-legal"
+          }
+        }
+      },
+      "block_order": ["explore", "contact", "mission", "help"],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "newsletter_enable": false,
+        "newsletter_heading": "Subscribe to our emails",
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": true,
+        "show_policy": false,
+        "margin_top": 0,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": ["footer"]
+}

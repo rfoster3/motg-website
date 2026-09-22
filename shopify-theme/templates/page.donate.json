@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "header": {
+      "type": "motg-feature",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "layout": "text_only",
+        "align": "center",
+        "eyebrow": "Give Directly",
+        "script_word": "Fund the",
+        "heading": "Magic",
+        "body": "<p>A gift of any size keeps the LeMoyne-Owen Magicians on the course. <strong>100% goes straight to the program</strong>, gear, travel, and the next round.</p>"
+      }
+    },
+    "tiers": {
+      "type": "motg-tiers",
+      "blocks": {
+        "t1": { "type": "tier", "settings": { "name": "Caddie", "amount": "$25", "perks": "A sleeve of tournament balls\nYour name on the donor wall", "button_label": "Give $25", "button_link": "/cart/add?id=54113670627638", "highlight": false } },
+        "t2": { "type": "tier", "settings": { "name": "Birdie", "amount": "$50", "perks": "Funds a full practice day\nRange & practice fees\nDonor wall + sticker pack", "button_label": "Give $50", "button_link": "/cart/add?id=54113670660406", "highlight": true, "badge": "Most Popular" } },
+        "t3": { "type": "tier", "settings": { "name": "Eagle", "amount": "$100", "perks": "A round of tournament travel\nMotG decal + social shout-out", "button_label": "Give $100", "button_link": "/cart/add?id=54113670693174", "highlight": false } },
+        "t4": { "type": "tier", "settings": { "name": "Albatross", "amount": "$250", "perks": "Outfits a player in team gear\nSigned thank-you from the team", "button_label": "Give $250", "button_link": "/cart/add?id=54113670725942", "highlight": false } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "eyebrow": "Choose your impact",
+        "heading": "Pick a Level",
+        "subheading": "Every dollar goes to the team. Most supporters give $50, enough to fund a full day of practice.",
+        "footnote": "Prefer to give monthly or a custom amount? Email dominique_worthen@loc.edu."
+      }
+    },
+    "funds": {
+      "type": "motg-feature",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "layout": "image_left",
+        "align": "left",
+        "asset_image": "motg-player.jpg",
+        "eyebrow": "What your gift funds",
+        "heading": "Real opportunity, one gift at a time",
+        "body": "<p><strong>Travel</strong>, vans, hotels, and entry fees so the team can compete anywhere.</p><p><strong>Gear</strong>, clubs, balls, bags, and apparel for every player on the roster.</p><p><strong>Future</strong>, pathways into golf careers through PGA programs and mentorship.</p>",
+        "button1_label": "Shop & Support",
+        "button1_link": "/collections/all"
+      }
+    }
+  },
+  "order": ["header", "tiers", "funds"]
+}

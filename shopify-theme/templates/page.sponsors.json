@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "header": {
+      "type": "motg-feature",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "layout": "text_only",
+        "align": "center",
+        "eyebrow": "Partners in Purpose",
+        "script_word": "Sponsor the",
+        "heading": "Magicians",
+        "body": "<p>Put your brand in front of a proud HBCU community and the Memphis golf scene while funding student-athletes. Choose a level, or email us for a custom package.</p>"
+      }
+    },
+    "tiers": {
+      "type": "motg-tiers",
+      "blocks": {
+        "t1": { "type": "tier", "settings": { "name": "Friend", "amount": "$500", "perks": "Name on the sponsor wall\nSocial media thank-you\n2 tournament tickets", "button_label": "Become a Friend", "button_link": "/cart/add?id=54113670758710", "highlight": false } },
+        "t2": { "type": "tier", "settings": { "name": "Cart", "amount": "$1,000", "perks": "Logo on all golf carts\nSponsor wall + socials\n4 tournament tickets", "button_label": "Sponsor Carts", "button_link": "/cart/add?id=54113670791478", "highlight": false } },
+        "t3": { "type": "tier", "settings": { "name": "Hole", "amount": "$2,500", "perks": "Branded hole signage\nLogo on site + program\nA foursome entry included\nEmail feature", "button_label": "Sponsor a Hole", "button_link": "/cart/add?id=54113670824246", "highlight": true, "badge": "Best Value" } },
+        "t4": { "type": "tier", "settings": { "name": "Title", "amount": "$5,000", "perks": "Top billing everywhere\nLogo on team gear\nTwo foursomes included\nSpeaking moment at dinner", "button_label": "Title Sponsor", "button_link": "/cart/add?id=54113670857014", "highlight": false } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "eyebrow": "Sponsorship levels",
+        "heading": "Choose a Level",
+        "subheading": "Most partners choose the Hole sponsorship: branded signage, a foursome entry, and a feature in our program.",
+        "footnote": "Want a custom package? Email dominique_worthen@loc.edu."
+      }
+    },
+    "player": {
+      "type": "motg-feature",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "layout": "image_right",
+        "align": "left",
+        "asset_image": "motg-player.jpg",
+        "eyebrow": "A direct connection",
+        "heading": "Sponsor a Player",
+        "body": "<p>Cover a single student-athlete's season: gear, travel, and entry fees. You'll get personal updates, a signed photo, and a thank-you from the player you back.</p>",
+        "button1_label": "Sponsor a Player, $1,200",
+        "button1_link": "/products/sponsor-a-player"
+      }
+    }
+  },
+  "order": ["header", "tiers", "player"]
+}

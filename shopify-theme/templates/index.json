@@ -1,0 +1,129 @@
+{
+  "sections": {
+    "motg_hero": {
+      "type": "motg-hero",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "eyebrow": "Fund the team · Wear the magic",
+        "script_word": "Magicians",
+        "title": "on the Green",
+        "lead": "Every hat, headcover, and gift drives the LeMoyne-Owen College golf team down the fairway. Shop the collection or give straight to the program.",
+        "button1_label": "Shop the Collection",
+        "button1_link": "/collections/all",
+        "button2_label": "Donate",
+        "button2_link": "/pages/donate",
+        "stat1_n": "100%", "stat1_l": "Funds the team",
+        "stat2_n": "HBCU", "stat2_l": "Memphis, TN",
+        "stat3_n": "54", "stat3_l": "Holes of magic"
+      }
+    },
+    "trustbar": {
+      "type": "motg-trustbar",
+      "blocks": {
+        "b1": { "type": "item", "settings": { "icon": "✦", "title": "100% to the Team", "text": "Every dollar funds the program" } },
+        "b2": { "type": "item", "settings": { "icon": "✦", "title": "Official HBCU Golf", "text": "LeMoyne-Owen College" } },
+        "b3": { "type": "item", "settings": { "icon": "✦", "title": "Ships from Memphis", "text": "3-5 business days" } },
+        "b4": { "type": "item", "settings": { "icon": "✦", "title": "Secure Checkout", "text": "Encrypted & protected" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"],
+      "settings": { "color_scheme": "scheme-2" }
+    },
+    "mission": {
+      "type": "motg-feature",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "layout": "text_only",
+        "align": "center",
+        "eyebrow": "Our Mission",
+        "heading": "Turning purple-and-gold pride into tee times, travel, and gear",
+        "body": "<p>Every purchase and gift powers the LeMoyne-Owen College golf team.</p>"
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Wear the Magic",
+        "heading_size": "h1",
+        "collection": "featured",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 44
+      }
+    },
+    "team": {
+      "type": "motg-feature",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "layout": "image_left",
+        "align": "left",
+        "asset_image": "motg-team.jpg",
+        "eyebrow": "Who you're backing",
+        "heading": "The LeMoyne-Owen Magicians",
+        "body": "<p>A young HBCU program in Memphis, building something special on the course and in the classroom. Your support covers equipment, tournament travel, and the chance to compete with anyone.</p><p>Truth · Virtue · Service · Courage</p>",
+        "button1_label": "Meet the Team",
+        "button1_link": "/pages/our-story"
+      }
+    },
+    "tournament": {
+      "type": "motg-feature",
+      "settings": {
+        "color_scheme": "scheme-4",
+        "layout": "text_only",
+        "align": "center",
+        "eyebrow": "Sept 13-15, 2026 · The Links at Pine Hill",
+        "script_word": "Magic on the Greens",
+        "heading": "Golf Tournament",
+        "body": "<p>54-hole stroke play benefiting the team. <strong>Only 15 team foursomes</strong>. Secure your spot before they're gone.</p>",
+        "button1_label": "Team Entry $1,500",
+        "button1_link": "/products/tournament-team-entry-foursome",
+        "button2_label": "Individual $300",
+        "button2_link": "/products/tournament-individual-entry-player"
+      }
+    },
+    "sponsors": {
+      "type": "motg-feature",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "layout": "text_only",
+        "align": "center",
+        "eyebrow": "Partners in Purpose",
+        "heading": "Become a Sponsor",
+        "body": "<p>Put your brand behind the program and reach a proud HBCU community and the Memphis golf scene while funding student-athletes. Sponsorships from $500.</p>",
+        "button1_label": "Sponsor the Team",
+        "button1_link": "/pages/sponsors"
+      }
+    },
+    "partners": {
+      "type": "motg-partners",
+      "blocks": {
+        "p1": { "type": "partner", "settings": { "name": "PGA of America" } },
+        "p2": { "type": "partner", "settings": { "name": "PGA Career Services" } },
+        "p3": { "type": "partner", "settings": { "name": "Make Golf Your Career" } },
+        "p4": { "type": "partner", "settings": { "name": "LeMoyne-Owen College" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"],
+      "settings": { "color_scheme": "scheme-2", "heading": "Partners in Purpose", "subtext": "Featuring PGA of America Career Services, opening doors to careers in golf for our student-athletes." }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": { "type": "heading", "settings": { "heading": "Join the Magicians list", "heading_size": "h2" } },
+        "paragraph": { "type": "paragraph", "settings": { "text": "<p>Drops, tournament news, and team wins, straight to your inbox.</p>" } },
+        "email_form": { "type": "email_form", "settings": {} }
+      },
+      "block_order": ["heading", "paragraph", "email_form"],
+      "settings": { "color_scheme": "scheme-3", "full_width": true, "padding_top": 40, "padding_bottom": 40 }
+    }
+  },
+  "order": ["motg_hero", "trustbar", "mission", "featured", "team", "tournament", "sponsors", "partners", "newsletter"]
+}

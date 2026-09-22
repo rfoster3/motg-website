@@ -1,0 +1,273 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Allura&family=Figtree:wght@400;500;600&display=swap">
+
+{%- liquid
+  assign eyebrow = section.settings.eyebrow
+  assign script_text = section.settings.script_text
+  assign heading = section.settings.heading
+  assign subtext = section.settings.subtext
+  assign success_text = section.settings.success_text
+-%}
+
+{%- style -%}
+  .mcs {
+    position: relative;
+    min-height: 76vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 54px 22px 66px;
+    overflow: hidden;
+    text-align: center;
+    color: #F5F0E1;
+    background:
+      linear-gradient(157deg, rgba(90,53,145,.90) 0%, rgba(59,34,102,.94) 45%, rgba(36,20,66,.97) 78%, rgba(24,13,49,.99) 100%),
+      url({{ 'motg-team.jpg' | asset_url }}) center 28% / cover no-repeat;
+  }
+  .mcs::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(58% 52% at 50% 40%, rgba(201,162,75,.16), transparent 70%);
+    pointer-events: none;
+  }
+  .mcs__inner { position: relative; z-index: 1; width: 100%; max-width: 620px; }
+  .mcs__crest { position: relative; width: clamp(120px, 22vw, 168px); margin: 0 auto 4px; }
+  .mcs__crest img { display: block; width: 100%; height: auto; filter: drop-shadow(0 12px 26px rgba(0,0,0,.5)); }
+  .mcs__crest::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    transform: translate(-50%, -50%);
+    width: 155%;
+    height: 155%;
+    z-index: -1;
+    background: radial-gradient(closest-side, rgba(201,162,75,.42), transparent 72%);
+  }
+  .mcs__eyebrow {
+    margin: 8px 0 4px;
+    font-family: "Figtree", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: #E2C275;
+  }
+  .mcs__script {
+    margin: 2px 0 6px;
+    font-family: "Allura", cursive;
+    font-weight: 400;
+    line-height: .9;
+    font-size: clamp(52px, 11vw, 88px);
+    color: #E2C275;
+    text-shadow: 0 6px 24px rgba(0,0,0,.35);
+  }
+  .mcs__heading {
+    margin: 0 0 14px;
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+    letter-spacing: .02em;
+    font-size: clamp(20px, 3.4vw, 30px);
+    color: #FFFFFF;
+  }
+  .mcs__subtext {
+    margin: 0 auto 26px;
+    max-width: 34em;
+    font-family: "Figtree", sans-serif;
+    font-weight: 400;
+    font-size: clamp(15px, 1.9vw, 17px);
+    line-height: 1.6;
+    color: rgba(245,240,225,.86);
+  }
+  .mcs__form { max-width: 448px; margin: 0 auto; }
+  .mcs__row { display: flex; gap: 10px; }
+  .mcs__input {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 15px 16px;
+    font-family: "Figtree", sans-serif;
+    font-size: 16px;
+    color: #fff;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(245,240,225,.35);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color .15s, background .15s;
+  }
+  .mcs__input::placeholder { color: rgba(245,240,225,.6); }
+  .mcs__input:focus { border-color: #C9A24B; background: rgba(255,255,255,.1); }
+  .mcs__btn {
+    flex: 0 0 auto;
+    padding: 15px 22px;
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+    letter-spacing: .04em;
+    font-size: 15px;
+    color: #2E1A4F;
+    white-space: nowrap;
+    cursor: pointer;
+    background: linear-gradient(180deg, #D8B25C, #C9A24B);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(201,162,75,.32);
+    transition: transform .12s, box-shadow .12s;
+  }
+  .mcs__btn:hover { transform: translateY(-1px); box-shadow: 0 10px 26px rgba(201,162,75,.42); }
+  .mcs__msg { margin-top: 12px; font-family: "Figtree", sans-serif; font-size: 14px; }
+  .mcs__msg--error { color: #FFC9C9; }
+  .mcs__msg--success {
+    margin-top: 0;
+    padding: 14px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #EBD9A6;
+    background: rgba(201,162,75,.12);
+    border: 1px solid rgba(201,162,75,.4);
+    border-radius: 10px;
+  }
+  .mcs__foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    justify-content: center;
+    margin-top: 26px;
+    font-family: "Figtree", sans-serif;
+    font-size: 12.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(226,194,117,.9);
+  }
+  .mcs__foot span { display: inline-flex; align-items: center; gap: 7px; }
+  .mcs__foot span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #C9A24B; }
+  @media (max-width: 520px) {
+    .mcs__row { flex-direction: column; }
+    .mcs__btn { width: 100%; }
+  }
+{%- endstyle -%}
+
+<div class="mcs">
+  <div class="mcs__inner">
+    {%- if section.settings.show_wizard -%}
+      <div class="mcs__crest">
+        <img
+          src="{{ 'motg-wizard.png' | asset_url }}"
+          alt="{{ shop.name | escape }} wizard mascot"
+          width="168"
+          height="167"
+          loading="eager"
+        >
+      </div>
+    {%- endif -%}
+
+    {%- if eyebrow != blank -%}<p class="mcs__eyebrow">{{ eyebrow }}</p>{%- endif -%}
+    {%- if script_text != blank -%}<div class="mcs__script">{{ script_text }}</div>{%- endif -%}
+    {%- if heading != blank -%}<h1 class="mcs__heading">{{ heading }}</h1>{%- endif -%}
+    {%- if subtext != blank -%}<div class="mcs__subtext">{{ subtext }}</div>{%- endif -%}
+
+    <div class="mcs__form">
+      {%- form 'customer', class: 'mcs__form-el' -%}
+        <input type="hidden" name="contact[tags]" value="prospect, password page, coming-soon">
+        {%- if form.posted_successfully? -%}
+          <p class="mcs__msg mcs__msg--success" tabindex="-1" autofocus>{{ success_text }}</p>
+        {%- else -%}
+          <div class="mcs__row">
+            <input
+              type="email"
+              name="contact[email]"
+              class="mcs__input"
+              value="{{ form.email }}"
+              aria-label="Email address"
+              placeholder="Enter your email"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              {% if form.errors %}aria-invalid="true"{% endif %}
+              required
+            >
+            <button type="submit" name="commit" class="mcs__btn">{{ section.settings.button_label }}</button>
+          </div>
+          {%- if form.errors -%}
+            <p class="mcs__msg mcs__msg--error">
+              {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+            </p>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+
+    {%- if section.settings.footnote_1 != blank or section.settings.footnote_2 != blank -%}
+      <div class="mcs__foot">
+        {%- if section.settings.footnote_1 != blank -%}<span>{{ section.settings.footnote_1 }}</span>{%- endif -%}
+        {%- if section.settings.footnote_2 != blank -%}<span>{{ section.settings.footnote_2 }}</span>{%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MOTG Coming Soon",
+  "tag": "section",
+  "class": "section",
+  "enabled_on": {
+    "templates": ["password"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_wizard",
+      "label": "Show wizard mascot",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "LeMoyne-Owen College Golf"
+    },
+    {
+      "type": "text",
+      "id": "script_text",
+      "label": "Script line",
+      "default": "Magicians on the Green"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Something magical is coming"
+    },
+    {
+      "type": "richtext",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "<p>Team gear, Magic Stick headcovers, and more are on the way. Drop your email and be first through the door when we open. Every order backs the LeMoyne-Owen College golf team.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Join the list"
+    },
+    {
+      "type": "text",
+      "id": "success_text",
+      "label": "Success message",
+      "default": "You are on the list. Watch your inbox for the magic."
+    },
+    {
+      "type": "text",
+      "id": "footnote_1",
+      "label": "Footnote 1",
+      "default": "100% supports the team"
+    },
+    {
+      "type": "text",
+      "id": "footnote_2",
+      "label": "Footnote 2"
+    }
+  ]
+}
+{% endschema %}
