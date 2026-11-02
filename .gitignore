@@ -6,3 +6,4 @@ _build_assets.py
 _check_*.jpg
 *.log
 .DS_Store
+.gstack/
