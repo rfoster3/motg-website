@@ -1,0 +1,5 @@
+purple_ghost_front m 1127 650 200 0
+purple_ghost_back wiz 896 400 225 0
+black_ghost_front m 1127 650 200 0
+white_ghost_front m 1127 650 200 0
+purple_model_front m 1135 880 165 -2
