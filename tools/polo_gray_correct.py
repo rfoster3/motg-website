@@ -1,9 +1,9 @@
 from PIL import Image, ImageFilter
 import numpy as np
 from scipy import ndimage as ni
-TARGET=214.
+TARGET=224.
 def torso(a,box): x0,y0,x1,y1=box; return np.median(a[y0:y1,x0:x1].mean(axis=2))
-for f,seed in [('lightgray_ghost_front',(896,1200)),('lightgray_ghost_back',(896,1200)),('lightgray_model_front',(760,1100)),('lightgray_model_back',(900,1100))]:
+for f,seed in [('lightgray_ghost_front',(896,1200)),('lightgray_ghost_back',(896,1200)),('lightgray_model_front',(760,1100)),('lightgray_model_back',(880,1100))]:
     im=Image.open(f'gen/{f}.png').convert('RGB'); a=np.asarray(im).astype(float)
     s=a.max(axis=2)-a.min(axis=2); l=a.mean(axis=2)
     m=(s<26)&(l>95)
