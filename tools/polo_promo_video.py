@@ -55,7 +55,8 @@ spaced(d,(64,1120),'WEAR THE',CIN(56,700),CREAM,6)
 d.text((54,1146),'Magic',font=ALL(200),fill=GOLD)
 L1b=layer(); d=ImageDraw.Draw(L1b)
 d.text((68,1404),'The M Golf Polo',font=FIG(42,600),fill=CREAM)
-d.text((68,1458),'10% of every purchase supports LeMoyne-Owen golf.',font=FIG(31,500),fill=GOLD)
+d.text((68,1456),'10% of every purchase supports',font=FIG(37,600),fill=GOLD)
+d.text((68,1500),'LeMoyne-Owen golf.',font=FIG(37,600),fill=GOLD)
 WM=layer(); d=ImageDraw.Draw(WM)
 spaced(d,(56,288),'MAGICIANS',CIN(30,700),CREAM,4); spaced(d,(56,326),'ON THE GREEN',CIN(30,700),CREAM,4)
 L2=layer(); d=ImageDraw.Draw(L2)
@@ -94,8 +95,8 @@ def shirt_frame(c,label,zoom):
 # end card
 def endcard():
     base=Image.fromarray(BG.astype(np.uint8)).convert('RGBA')
-    im=cutimgs['purple']; im2=im.resize((470,int(im.height*470/im.width)),Image.LANCZOS)
-    x=(W-im2.width)//2; y=390
+    im=cutimgs['purple']; im2=im.resize((430,int(im.height*430/im.width)),Image.LANCZOS)
+    x=(W-im2.width)//2; y=385
     a=im2.split()[3]; sh=Image.new('RGBA',im2.size,(10,5,20,0)); sh.putalpha(a.point(lambda p:p*0.55))
     shl=layer(); shl.alpha_composite(sh,(x+8,y+30)); shl=shl.filter(ImageFilter.GaussianBlur(24))
     base.alpha_composite(shl); base.alpha_composite(im2,(x,y))
@@ -119,7 +120,7 @@ d.line(((W-120)/2,1330+oy,(W+120)/2,1330+oy),fill=GOLD,width=3)
 for i,tx in enumerate(['10% of every purchase supports','LeMoyne-Owen golf.']): ctr(d,1352+oy+i*52,tx,FIG(40,500),CREAM)
 E4=layer(); d=ImageDraw.Draw(E4)
 for i,tx in enumerate(['Independent supporter brand.','Not an official LeMoyne-Owen College product.']): ctr(d,1470+oy+i*38,tx,FIG(29,500),CREAM+(200,))
-SC_BOT=scrim(880,1560,amax=0.9); SC_TOP=scrim(0,470,top=True,amax=0.6)
+SC_BOT=scrim(860,1480,amax=0.93); SC_TOP=scrim(0,470,top=True,amax=0.6)
 # still close-up source
 CL=Image.open(S+'gen/m1_logo.png').convert('RGB'); LX,LY=1281,1023
 rng=np.random.default_rng(7)
@@ -135,7 +136,7 @@ def mix(a,b,k): return Image.blend(a,b,k)
 def frame(i):
     t=i/FPS
     if t<B[1]:
-        fr=grade(Image.fromarray(A[min(int(t*24),len(A)-1)]))
+        fr=grade(Image.fromarray(A[min(int(t*0.93*24),len(A)-1)]))
         fr.alpha_composite(SC_BOT); fr.alpha_composite(SC_TOP)
         fr.alpha_composite(L1); fr.alpha_composite(WM); fr=anim(fr,L1b,0.35,t)
     elif t<B[2]:
@@ -146,19 +147,17 @@ def frame(i):
         fr.alpha_composite(SC_BOT); fr=anim(fr,L2,B[1]+0.2,t)
     elif t<B[3]:
         u=t-B[2]; FW=1792
-        def front(u): return push(FRONT,FW/2,3186/2,FW*(1-0.06*ease2(u/0.9)))
+        def front(u): return push(FRONT,FW/2,3186/2,FW*(1-0.06*ease2(u/1.0)))
         def turn(u):
-            st=2.1+(u-0.75)*(1.3/1.2); return Image.fromarray(T[min(max(int(st*24),0),len(T)-1)]).convert('RGBA')
+            st=2.4+(u-1.0)*(0.35/0.5); return Image.fromarray(T[min(max(int(st*24),0),len(T)-1)]).convert('RGBA')
         def back(u):
-            k=ease2((u-2.0)/1.7); cw=FW*(1-k)+600*k
+            k=ease2((u-1.5)/2.0); cw=FW*(1-k)+600*k
             cx=FW/2*(1-k)+WX*k; cy=3186/2*(1-k)+(WY+170)*k
             return push(BACK,cx,cy,cw)
-        if u<0.75: fr=front(u)
-        elif u<0.9: fr=mix(front(u),turn(u),(u-0.75)/0.15)
-        elif u<1.8: fr=turn(u)
-        elif u<2.0: fr=mix(turn(u),back(u),(u-1.8)/0.2)
+        if u<1.0: fr=front(u)
+        elif u<1.5: fr=turn(u)
         else: fr=back(u)
-        fr.alpha_composite(SC_BOT if u>2.2 else layer()); fr=anim(fr,L3,B[2]+2.4,t)
+        fr.alpha_composite(SC_BOT if u>1.9 else layer()); fr=anim(fr,L3,B[2]+2.2,t)
     elif t<B[4]:
         k=min(int((t-B[3])/((B[4]-B[3])/4)),3); tl=(t-B[3])-k*(B[4]-B[3])/4
         c,lab=COLS[k]; fr=shirt_frame(c,lab,0.97+0.03*ease(tl/0.7))
