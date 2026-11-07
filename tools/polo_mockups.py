@@ -58,7 +58,7 @@ a=np.asarray(src.convert('RGB')).astype(int); al=np.asarray(src.split()[3])
 X0,Y0,X1,Y1=650,120,1050,520
 reg=a[Y0:Y1,X0:X1]; ok=al[Y0:Y1,X0:X1]>250
 med=np.median(reg[ok].reshape(-1,3),0)
-dd=(np.abs(reg-med).sum(2)>140)&ok
+dd=((reg[...,1]>reg[...,2]-5)|(reg.min(2)>200))&ok
 dd=ndimage.binary_opening(dd,iterations=2)
 ys,xs=np.where(dd)
 wx=X0+(xs.min()+xs.max())/2; wy=Y0+(ys.min()+ys.max())/2

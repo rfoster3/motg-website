@@ -1,7 +1,7 @@
 import numpy as np
 from PIL import Image
 from scipy import ndimage
-A='/Users/ronniefoster/motg-website/assets/polo/'
+A='perf/'
 for c in ['purple','black','white','lightgray']:
   for v in ['front','back']:
     im=Image.open(f'{A}m-golf-polo-{c}-ghost-{v}.jpg').convert('RGB'); a=np.asarray(im).astype(int)
