@@ -8,7 +8,7 @@ def font(name,size,w=None):
     return f
 PURPLE=(75,42,127); GOLD=(214,178,96); CREAM=(245,240,225); DEEP=(36,18,64)
 variant=sys.argv[1] if len(sys.argv)>1 else 'launch'
-src=Image.open('gen/r1_logo.png').convert('RGB')   # 2160x2688
+src=Image.open('gen/m1_logo.png').convert('RGB')   # 2160x2688
 k=2160/896
 x0,y0,w=int(80*k),0,int(700*k); h=int(w*1.25)
 im=src.crop((x0,y0,x0+w,y0+h)).resize((1080,1350),Image.LANCZOS)
