@@ -149,13 +149,13 @@ def frame(i):
         u=t-B[2]; FW=1792
         def front(u): return push(FRONT,FW/2,3186/2,FW*(1-0.06*ease2(u/1.0)))
         def turn(u):
-            st=2.4+(u-1.0)*(0.35/0.5); return Image.fromarray(T[min(max(int(st*24),0),len(T)-1)]).convert('RGBA')
+            st=2.6+(u-1.05)*(0.14/0.4); return Image.fromarray(T[min(max(int(st*24),0),len(T)-1)]).convert('RGBA')
         def back(u):
-            k=ease2((u-1.5)/2.0); cw=FW*(1-k)+600*k
+            k=ease2((u-1.45)/2.05); cw=FW*(1-k)+600*k
             cx=FW/2*(1-k)+WX*k; cy=3186/2*(1-k)+(WY+170)*k
             return push(BACK,cx,cy,cw)
-        if u<1.0: fr=front(u)
-        elif u<1.5: fr=turn(u)
+        if u<1.05: fr=front(u)
+        elif u<1.45: fr=turn(u)
         else: fr=back(u)
         fr.alpha_composite(SC_BOT if u>1.9 else layer()); fr=anim(fr,L3,B[2]+2.2,t)
     elif t<B[4]:
