@@ -2,6 +2,9 @@ import sys, subprocess, numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 S='/private/tmp/claude-501/-Users-ronniefoster/022544da-2e1b-4a69-b288-2227e95b178b/scratchpad/'
 V=S+'vid/'; F=S+'fonts/'
+import os
+GIVE=os.environ.get('GIVE','10')
+GTXT='100% of net proceeds support' if GIVE=='100' else '10% of every purchase supports'
 MODE=sys.argv[1] if len(sys.argv)>1 else 'launch'   # launch | prelaunch
 OUT=sys.argv[2] if len(sys.argv)>2 else V+f'motg-polo-promo-{MODE}.mp4'
 W,H,FPS=1080,1920,30
@@ -15,7 +18,7 @@ def font(n,s,w=None):
 CIN=lambda s,w=600: font('Cinzel%5Bwght%5D.ttf',s,w)
 FIG=lambda s,w=500: font('Figtree%5Bwght%5D.ttf',s,w)
 ALL=lambda s: font('Allura-Regular.ttf',s)
-B=[0,2.667,5.333,9.333,12.667,17.0]   # cuts on 90 bpm beats
+B=[0,2.667,6.0,10.0,13.333,17.667]   # cuts on 90 bpm beats
 N=int(B[-1]*FPS)
 def ease(x): x=min(max(x,0),1); return 1-(1-x)**3
 def load(path):
@@ -55,7 +58,7 @@ spaced(d,(64,1120),'WEAR THE',CIN(56,700),CREAM,6)
 d.text((54,1146),'Magic',font=ALL(200),fill=GOLD)
 L1b=layer(); d=ImageDraw.Draw(L1b)
 d.text((68,1404),'The M Golf Polo',font=FIG(42,600),fill=CREAM)
-d.text((68,1456),'10% of every purchase supports',font=FIG(37,600),fill=GOLD)
+d.text((68,1456),GTXT,font=FIG(37,600),fill=GOLD)
 d.text((68,1500),'LeMoyne-Owen golf.',font=FIG(37,600),fill=GOLD)
 WM=layer(); d=ImageDraw.Draw(WM)
 spaced(d,(56,288),'MAGICIANS',CIN(30,700),CREAM,4); spaced(d,(56,326),'ON THE GREEN',CIN(30,700),CREAM,4)
@@ -117,10 +120,34 @@ E3=layer(); d=ImageDraw.Draw(E3)
 ctr(d,1212,'THE M GOLF POLO',CIN(40,700),CREAM,4)
 if PRE: ctr(d,1262,'COMING SOON',CIN(40,700),GOLD,6)
 d.line(((W-120)/2,1330+oy,(W+120)/2,1330+oy),fill=GOLD,width=3)
-for i,tx in enumerate(['10% of every purchase supports','LeMoyne-Owen golf.']): ctr(d,1352+oy+i*52,tx,FIG(40,500),CREAM)
+for i,tx in enumerate([GTXT,'LeMoyne-Owen golf.']): ctr(d,1352+oy+i*52,tx,FIG(40,500),CREAM)
 E4=layer(); d=ImageDraw.Draw(E4)
 for i,tx in enumerate(['Independent supporter brand.','Not an official LeMoyne-Owen College product.']): ctr(d,1470+oy+i*38,tx,FIG(29,500),CREAM+(200,))
 SC_BOT=scrim(860,1480,amax=0.93); SC_TOP=scrim(0,470,top=True,amax=0.6)
+# embroidery macro (verified against logo-m.png by overlay)
+CUT=1.667
+MAC=Image.open(V+'macro_src.png').convert('RGB'); MAC=MAC.resize((1320,int(1320*MAC.height/MAC.width)),Image.LANCZOS)
+MW,MH=MAC.size
+_m=np.asarray(MAC).astype(np.float32); _r,_g,_b=_m[...,0],_m[...,1],_m[...,2]
+THREAD=np.clip(((_r-_b)-20)/60,0,1)+np.clip((_m.mean(2)-170)/50,0,1)   # gold + white thread
+THREAD=np.clip(THREAD,0,1)
+def macro(u):
+    k=ease2(u); cw=MW*(1-0.15*k); ch=cw*16/9
+    ax,ay=MW*0.50,MH*0.45            # push anchor near the top so the M stays under the title
+    cx=MW/2+(ax-MW/2)*(1-cw/MW); cy=MH/2+(ay-MH/2)*(1-cw/MW)
+    box=(cx-cw/2,cy-ch/2,cx+cw/2,cy+ch/2)
+    a=np.asarray(MAC.resize((W,H),Image.LANCZOS,box=box)).astype(np.float32)
+    lum=a.mean(2,keepdims=True); a=(lum+(a-lum)*0.90)*1.12   # match chest-shot purple
+    th=np.asarray(Image.fromarray((THREAD*255).astype(np.uint8)).resize((W,H),Image.BILINEAR,box=box)).astype(np.float32)/255
+    # slow light sweep raking across the thread
+    yy,xx=np.mgrid[0:H,0:W]; pos=-500+2100*u
+    band=np.exp(-(((xx*0.8+yy*0.6)-pos)/170.0)**2)
+    a=a*(1+0.22*(band*th)[...,None])
+    return Image.fromarray(np.clip(a,0,255).astype(np.uint8)).convert('RGBA')
+L2M=layer(); d=ImageDraw.Draw(L2M)
+f=CIN(50,700); tw=spaced_w(d,'EMBROIDERED',f,6); spaced(d,((W-tw)/2,300),'EMBROIDERED',f,CREAM,6)
+f2=FIG(38,600); tw=d.textlength('Stitched, not printed.',font=f2); d.text(((W-tw)/2,372),'Stitched, not printed.',font=f2,fill=GOLD)
+SC_MTOP=scrim(0,520,top=True,amax=0.55)
 # still close-up source
 CL=Image.open(S+'gen/m1_logo.png').convert('RGB'); LX,LY=1281,1023
 rng=np.random.default_rng(7)
@@ -140,11 +167,15 @@ def frame(i):
         fr.alpha_composite(SC_BOT); fr.alpha_composite(SC_TOP)
         fr.alpha_composite(L1); fr.alpha_composite(WM); fr=anim(fr,L1b,0.35,t)
     elif t<B[2]:
-        u=(t-B[1])/(B[2]-B[1]); cw=980-380*ease(u*0.9); ch=cw*16/9
-        cx=LX-cw*0.08; cy=LY+ch*0.24
-        box=(cx-cw/2,cy-ch/2,cx+cw/2,cy+ch/2)
-        fr=grade(CL.resize((W,H),Image.LANCZOS,box=box))
-        fr.alpha_composite(SC_BOT); fr=anim(fr,L2,B[1]+0.2,t)
+        if t-B[1]<CUT:
+            u=(t-B[1])/(B[2]-B[1]); cw=980-380*ease(u*0.9); ch=cw*16/9
+            cx=LX-cw*0.08; cy=LY+ch*0.24
+            box=(cx-cw/2,cy-ch/2,cx+cw/2,cy+ch/2)
+            fr=grade(CL.resize((W,H),Image.LANCZOS,box=box))
+        else:
+            fr=macro((t-B[1]-CUT)/(B[2]-B[1]-CUT))
+        if t-B[1]<CUT: fr.alpha_composite(SC_BOT); fr=anim(fr,L2,B[1]+0.2,t)
+        else: fr.alpha_composite(SC_MTOP); fr=anim(fr,L2M,B[1]+CUT+0.12,t)
     elif t<B[3]:
         u=t-B[2]; FW=1792
         def front(u): return push(FRONT,FW/2,3186/2,FW*(1-0.06*ease2(u/1.0)))
@@ -178,7 +209,7 @@ if __name__=='__main__':
             Image.fromarray(frame(int(float(ts)*FPS))).save(V+f'chk_{MODE}_{ts}.jpg',quality=90)
         sys.exit()
     p=subprocess.Popen(['ffmpeg','-v','error','-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),'-i','-',
-        '-i',V+'music1.mp3','-filter_complex','[1:a]atrim=0:17,afade=t=in:d=0.15,afade=t=out:st=16.3:d=0.7,loudnorm=I=-14:TP=-2:LRA=11,alimiter=limit=0.79:level=false[a]',
+        '-i',V+'music1.mp3','-filter_complex','[1:a]atrim=0:17.667,afade=t=in:d=0.15,afade=t=out:st=16.967:d=0.7,loudnorm=I=-14:TP=-2:LRA=11,alimiter=limit=0.79:level=false[a]',
         '-map','0:v','-map','[a]','-c:v','libx264','-preset','slow','-crf','18','-pix_fmt','yuv420p','-profile:v','high','-colorspace','bt709','-color_primaries','bt709','-color_trc','bt709',
         '-c:a','aac','-b:a','192k','-ar','48000','-movflags','+faststart','-map_metadata','-1','-shortest',OUT],stdin=subprocess.PIPE)
     for i in range(N): p.stdin.write(frame(i).tobytes())
