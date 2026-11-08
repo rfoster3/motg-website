@@ -27,3 +27,13 @@ CTA button: Sign Up (to the pre-launch email capture page)
 ## Video gates (same as the stills)
 - Written sign-off from LeMoyne-Owen College (both versions).
 - The videos show rendered product, not a photographed sample. Before the launch version runs: store unlocked, real price, stock or ship date set, and a physical sample checked against the video's purple, logo size and stitch look. Swap in sample footage if they differ.
+
+## 100% version videos (motg-polo-promo-launch-100.mp4, motg-polo-promo-prelaunch-100.mp4, 9:16, 17.7s)
+Adds an embroidery close-up ("Embroidered. Stitched, not printed.") and says "100% of proceeds supports LeMoyne-Owen golf."
+Launch primary text: Purple, gold, and a little magic. The M Golf Polo is here: an embroidered M, smooth stretch performance knit, four colors, and the Magician on the back. 100% of proceeds supports LeMoyne-Owen golf. Magicians on the Green is an independent supporter brand. Not an official LeMoyne-Owen College product.
+Pre-launch primary text: Purple, gold, and a little magic. The M Golf Polo drops soon, with an embroidered M and the Magician on the back. Get on the list for first access. 100% of proceeds supports LeMoyne-Owen golf. Magicians on the Green is an independent supporter brand. Not an official LeMoyne-Owen College product.
+Headlines and CTAs: same as the 10% videos.
+Extra gates for the 100% version:
+- Pick ONE number. MOTG-HANDOFF-BRIEF says 10%; the store's shared product template says "100% of proceeds". Every ad, page and listing must say the same thing.
+- Write down what "proceeds" means (for example: sale price minus product cost, shipping and payment fees) and put it on the product page or FAQ, so "100%" can be shown to be true.
+- The college's written sign-off should name the 100% figure.
