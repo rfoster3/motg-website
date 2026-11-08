@@ -137,7 +137,7 @@ def macro(u):
     cx=MW/2+(ax-MW/2)*(1-cw/MW); cy=MH/2+(ay-MH/2)*(1-cw/MW)
     box=(cx-cw/2,cy-ch/2,cx+cw/2,cy+ch/2)
     a=np.asarray(MAC.resize((W,H),Image.LANCZOS,box=box)).astype(np.float32)
-    lum=a.mean(2,keepdims=True); a=(lum+(a-lum)*0.90)*1.12   # match chest-shot purple
+    lum=a.mean(2,keepdims=True); a=(lum+(a-lum)*1.10)*1.04   # match chest-shot purple
     th=np.asarray(Image.fromarray((THREAD*255).astype(np.uint8)).resize((W,H),Image.BILINEAR,box=box)).astype(np.float32)/255
     # slow light sweep raking across the thread
     yy,xx=np.mgrid[0:H,0:W]; pos=-500+2100*u
